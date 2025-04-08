@@ -1,3 +1,7 @@
+### Names: Mason Reiter Noah Chang
+### Email: mwreiter@umich.edu noahchan@umich.edu
+### Notes: Calendar Holiday Umich Comparisson Project
+
 import sqlite3
 import requests
 
@@ -87,3 +91,24 @@ conn.commit()
 conn.close()
 
 print(f"✅ Inserted {inserted_count} new holiday(s) into holidays.db")
+
+
+def merge_databses(path1, path2):
+    #Function to merge the second API database once it is made. 
+    # Connect to source and target databases
+    source_conn = sqlite3.connect(source_db_path)
+    target_conn = sqlite3.connect(target_db_path)
+
+    source_cur = source_conn.cursor()
+    target_cur = target_conn.cursor()
+
+    # Optional: Create the target holidays table if it doesn't exist
+    target_cur.execute('''
+        CREATE TABLE IF NOT EXISTS holidays (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            description TEXT,
+            date TEXT UNIQUE,
+            month INTEGER
+        )
+    ''')
