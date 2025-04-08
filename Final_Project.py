@@ -1,88 +1,89 @@
-### Names: Maason Reiter and Noah Chang
-### Final_Project for SI206 
-### Emails: mwreiter@umich.edu noahchan@umich.edu
-### Notes: Calendar and Holidays Project
-
 import sqlite3
 import requests
-import time
 
-### Names: Maason Reiter and Noah Chang
-### Final_Project for SI206
-### Emails: mwreiter@umich.edu
-### Notes: Calendar Holiday Project Idea
-
-
-import requests
-
-
+# Setup API
 API_KEY = "2Cmq6y302J2wSAtLtdGBxYnkZoxDW4aV"
 base_url = "https://calendarific.com/api/v2/holidays"
-
-
 country = "US"
 year = 2025
 
+# Connect to SQLite
+conn = sqlite3.connect("holidays.db")
+cur = conn.cursor()
 
-#print(f"Holidays for {country} in {year} (max 10 per month, excluding bank holidays):\n")
+# Create table if not exists
+cur.execute('''
+    CREATE TABLE IF NOT EXISTS holidays (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        description TEXT,
+        date TEXT UNIQUE,  -- Prevents duplicates by date
+        month INTEGER
+    )
+''')
 
+# Track how many new rows we insert this run
+inserted_count = 0
+max_insert = 25
 
+# Go month by month
 for month in range(1, 13):
-   params = {
-       "api_key": API_KEY,
-       "country": country,
-       "year": year,
-       "month": month,
-   }
+    if inserted_count >= max_insert:
+        break
 
-#Code to print info
-   try:
-       response = requests.get(base_url, params=params)
-       data = response.json()
+    params = {
+        "api_key": API_KEY,
+        "country": country,
+        "year": year,
+        "month": month,
+    }
 
+    try:
+        response = requests.get(base_url, params=params)
+        data = response.json()
 
-       if "response" in data and "holidays" in data["response"]:
-           holidays = data["response"]["holidays"]
+        if "response" in data and "holidays" in data["response"]:
+            holidays = data["response"]["holidays"]
+            seen = set()
 
+            for holiday in holidays:
+                if inserted_count >= max_insert:
+                    break
 
-           print(f"\n📅 Month: {month:02}")
-           count = 0
-           seen = set()
+                name = holiday.get("name", "").strip()
+                description = holiday.get("description", "").strip()
+                date = holiday['date']['iso']
 
+                # Skip duplicates in same run
+                key = (name.lower(), date)
+                if key in seen:
+                    continue
+                seen.add(key)
 
-           for holiday in holidays:
-               name = holiday.get("name", "").lower()
-               description = holiday.get("description", "").lower()
+                # Skip if 'bank' in name or description
+                if "bank" in name.lower() or "bank" in description.lower():
+                    continue
 
+                # Check if this date already exists in DB
+                cur.execute("SELECT 1 FROM holidays WHERE date = ?", (date,))
+                if cur.fetchone():
+                    continue  # Already exists
 
-               # Filter out "bank" holidays
-               if "bank" in name or "bank" in description:
-                   continue
+                # Insert new record
+                cur.execute('''
+                    INSERT INTO holidays (name, description, date, month)
+                    VALUES (?, ?, ?, ?)
+                ''', (name, description, date, month))
+                inserted_count += 1
 
+        else:
+            print(f"No data for month {month}.")
 
-               date = holiday['date']['iso']
-               key = (name, date)
+    except Exception as e:
+        print(f"Error for month {month}: {e}")
 
+# Save & close
+conn.commit()
+conn.close()
 
-               if key not in seen:
-                   seen.add(key)
-                   print(f"{date} - {holiday['name']}")
-                   count += 1
-
-
-               if count >= 12:
-                   break
-       else:
-           print(f"No data returned for month {month}.")
-
-
-   except Exception as e:
-       print(f"Error for month {month}:", e)
-
-
-
-
-
-
-
-
+print(f"✅ Inserted {inserted_count} new holiday(s) into holidays.db")
