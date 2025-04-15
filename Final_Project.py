@@ -10,7 +10,7 @@ import requests
 API_KEY = "2Cmq6y302J2wSAtLtdGBxYnkZoxDW4aV"
 base_url = "https://calendarific.com/api/v2/holidays"
 country = "US"
-year = 2025
+year = 2024
 
 # Weather API setup
 latitude = 42.2808  # Ann Arbor, MI
@@ -173,46 +173,51 @@ except Exception as e:
     print("❌ Error fetching weather data:", e)
 
 
-
-# --- HOLIDAY + DAILY WEATHER MATCHING TABLE ---
+#Merge Tables
 cur.execute('''
     CREATE TABLE IF NOT EXISTS holiday_weather (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        holiday_id INTEGER,
-        weather_date TEXT,
-        FOREIGN KEY (holiday_id) REFERENCES holidays(id),
-        FOREIGN KEY (weather_date) REFERENCES weather_daily(date),
-        UNIQUE(holiday_id, weather_date)
+        date TEXT UNIQUE,
+        name TEXT,
+        temperature_max REAL,
+        temperature_min REAL,
+        precipitation_sum REAL
     )
 ''')
 
-cur.execute("SELECT id, date FROM holidays")
-holidays = cur.fetchall()
+# Insert data from joined holidays + weather_daily
+cur.execute('''
+    SELECT h.date, h.name, w.temperature_max, w.temperature_min, w.precipitation_sum
+    FROM holidays h
+    JOIN weather_daily w ON h.date = w.date
+''')
 
-matched = 0
-max_links = 25
+rows = cur.fetchall()
+merged_inserted = 0
 
-for holiday_id, holiday_date in holidays:
-    if matched >= max_links:
-        break
+for row in rows:
+    date, name, temperature_max, temperature_min, precipitation_sum = row
 
-    # Find daily weather with exact matching date
-    cur.execute("SELECT date FROM weather_daily WHERE date = ? LIMIT 1", (holiday_date,))
-    result = cur.fetchone()
+    # Avoid duplicate insertions
+    cur.execute("SELECT 1 FROM holiday_weather WHERE date = ?", (date,))
+    if cur.fetchone():
+        continue
 
-    if result:
-        weather_date = result[0]
-        cur.execute('''
-            INSERT OR IGNORE INTO holiday_weather (holiday_id, weather_date)
-            VALUES (?, ?)
-        ''', (holiday_id, weather_date))
-        matched += 1
+    cur.execute('''
+        INSERT INTO holiday_weather (
+            date, name, temperature_max, temperature_min, precipitation_sum
+        ) VALUES (?, ?, ?, ?, ?)
+    ''', (date, name, temperature_max, temperature_min, precipitation_sum))
+    merged_inserted += 1
 
-print(f"🔗 Linked {matched} holidays to daily weather rows")
+print(f"Merged {merged_inserted} rows into holiday_weather table")
+
 
 
 
 # FINALIZE
 conn.commit()
 conn.close()
-print("🎉 All data saved to holidays.db")
+print("All data saved to holidays.db")
+
+
