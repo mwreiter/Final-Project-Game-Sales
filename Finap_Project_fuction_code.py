@@ -2,6 +2,10 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 
+import sqlite3
+import pandas as pd
+import matplotlib.pyplot as plt
+
 def calculate_avg_temp_by_week():
     # Connect to the existing holidays.db
     conn = sqlite3.connect("holidays.db")
@@ -13,9 +17,9 @@ def calculate_avg_temp_by_week():
     query = '''
     SELECT w.date, w.temperature_max, h.name AS holiday_name
     FROM weather_daily w
-    LEFT JOIN holidays h ON w.date = h.date
-    WHERE w.date BETWEEN '2024-01-01' AND '2024-05-31'
-    ORDER BY w.date ASC
+    INNER JOIN holidays h ON w.date = h.date
+    WHERE h.date BETWEEN '2024-01-01' AND '2024-05-31'
+    ORDER BY w.temperature_max DESC
     '''
     df = pd.read_sql_query(query, conn)
 
@@ -66,6 +70,9 @@ def calculate_avg_temp_by_week():
     print("✅ Saved bar chart as avg_weekly_temp_bar_sorted.png")
 
     conn.close()
+
+if __name__ == "__main__":
+    calculate_avg_temp_by_week()
 
 def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="monthly_precipitation_report.txt"):
     """
