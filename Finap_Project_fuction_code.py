@@ -19,7 +19,7 @@ def calculate_avg_temp_by_week():
     FROM weather_daily w
     INNER JOIN holidays h ON w.date = h.date
     WHERE h.date BETWEEN '2024-01-01' AND '2024-05-31'
-    ORDER BY w.temperature_max DESC
+    ORDER BY w.date ASC
     '''
     df = pd.read_sql_query(query, conn)
 
