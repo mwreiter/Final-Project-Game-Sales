@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def calculate_avg_temp_by_week():
     # Connect to the existing holidays.db
@@ -44,8 +45,27 @@ def calculate_avg_temp_by_week():
 
     print("✅ Wrote analysis to avg_weekly_temperature.txt")
 
+    # --- 📊 BAR CHART: Hottest to Coldest Week ---
+    # Sort from highest to lowest temperature
+    sorted_df = grouped.sort_values(by='avg_temp_max', ascending=False)
+
+    # Build x-axis labels as Week # with holiday(s) below
+    sorted_df['label'] = sorted_df.apply(
+        lambda row: f"Week {row['week']} ({row['year']})\n{row['holidays'] or '-'}", axis=1
+    )
+
+    plt.figure(figsize=(12, 6))
+    plt.bar(sorted_df['label'], sorted_df['avg_temp_max'], color='tomato', edgecolor='black')
+    plt.xticks(rotation=45, ha='right')
+    plt.title("Average Weekly Max Temp (Jan–June 2024)\nSorted Hottest to Coldest")
+    plt.ylabel("Avg Max Temp (°C)")
+    plt.tight_layout()
+    plt.savefig("avg_weekly_temp_bar_sorted.png")
+    plt.show()
+
+    print("✅ Saved bar chart as avg_weekly_temp_bar_sorted.png")
+
     conn.close()
 
-# Run the function
 if __name__ == "__main__":
     calculate_avg_temp_by_week()
