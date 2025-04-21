@@ -56,7 +56,7 @@ def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="m
         for line in all_lines:
             f.write(line + "\n")
 
-    print(f"\n✅ Full report saved to {output_file}")
+    print(f"Full report saved to {output_file}")
 
     # Create visualization
     if month_precip:
@@ -73,7 +73,7 @@ def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="m
         plt.savefig("monthly_holiday_precip_chart.png")
         plt.show()
 
-        print("✅ Chart saved as monthly_holiday_precip_chart.png")
+        print("Chart saved as monthly_holiday_precip_chart.png")
 
 # Run the function
 if __name__ == "__main__":
