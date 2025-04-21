@@ -1,0 +1,53 @@
+Year	Week	Avg Max Temp (°C)	Holiday(s)
+2024	1	1.14	New Year's Day, World Braille Day, Epiphany, Orthodox Christmas Day, New Year's Eve
+2024	2	-2.03	Battle of New Orleans, Stephen Foster Memorial Day, Orthodox New Year
+2024	3	-8.30	Martin Luther King Jr. Day, Robert E. Lee's Birthday, World Religion Day
+2024	4	4.78	International Day of Education, Tu Bishvat/Tu B'Shevat, International Customs Day, International Day of Commemoration in Memory of the Victims of the Holocaust, World Leprosy Day
+2024	5	6.02	Kansas Day, National Freedom Day, World Wetlands Day, International Day of Human Fraternity
+2024	6	8.20	International Day of Zero Tolerance for Female Genital Mutilation, National Girls and Women in Sports Day, Isra and Mi'raj, World Pulses Day, International Day of Women and Girls in Science
+2024	7	3.06	Lincoln's Birthday, World Radio Day, Ash Wednesday, Susan B. Anthony's Birthday, Elizabeth Peratrovich Day
+2024	8	9.60	Presidents' Day, World Day of Social Justice, International Mother Language Day, African-American Scientist and Inventor Day
+2024	9	9.70	Linus Pauling Day, Leap Day, Zero Discrimination Day, Texas Independence Day, World Wildlife Day
+2024	10	12.72	Casimir Pulaski Day, Town Meeting Day, Maha Shivaratri, International Day of Women Judges
+2024	11	12.40	Ramadan Starts, World Kidney Day, Long Covid Awareness Day, St. Patrick's Day
+2024	12	2.43	Evacuation Day observed, French Language Day, International Day for the Elimination of Racial Discrimination, World Water Day, World Meteorological Day, Palm Sunday
+2024	13	11.45	Holi, Prince Jonah Kuhio Kalanianaole Day, Maundy Thursday, Good Friday, Holy Saturday, International Transgender Day of Visibility
+2024	14	10.83	April Fool's Day, World Autism Awareness Day, United Nations' Mine Awareness Day, Lailat al-Qadr, International Day of Sport for Development and Peace, United Nations' World Health Day
+2024	15	17.90	National Library Workers' Day, Eid al-Fitr, International Day of Human Space Flight, Thomas Jefferson's Birthday, World Chagas Disease Day
+2024	16	14.83	World Art Day, Emancipation Day, International Day for Monuments and Sites, Arbor Day, Chinese Language Day, World Creativity and Innovation Day
+2024	17	15.23	Passover Eve, Passover (first day), International Day of Multilateralism and Diplomacy for Peace, International Girls in ICT Day, World Intellectual Property Day, World Day for Safety and Health at Work
+2024	18	22.36	Arbor Day, Last Day of Passover, Law Day, World Tuna Day, Orthodox Good Friday, Orthodox Holy Saturday, Orthodox Easter
+2024	19	18.40	Yom HaShoah, National Teacher Appreciation Day, Time of Remembrance and Reconciliation for Those Who Lost Their Lives during the Second World War, Ascension Day, International Day of Argania, World Migratory Bird Day, International Nurses Day
+2024	20	24.50	Yom Ha'atzmaut, International Day of Families, International Day of Living Together in Peace, World Telecommunication and Information Society Day, Public Lands Day, Pentecost
+2024	21	27.00	Whit Monday, World Day for Cultural Diversity for Dialogue and Development, International Day for Biological Diversity, International Day to End Obstetric Fistula, African Liberation Day, Trinity Sunday
+2024	22	21.90	Memorial Day, International Day of United Nations Peacekeepers, Corpus Christi, World No Tobacco Day, Global Day of Parents, Native American Day
+2024	23	25.25	World Bicycle Day, International Day of Innocent Children Victims of Aggression, World Environment Day, Day of the Russian Language, World Food Safety Day, World Oceans Day
+2024	24	27.08	Kamehameha Day, Shavuot, International Albinism Awareness Day, World Blood Donor Day, World Elder Abuse Awareness Day, International Day of Family Remittances
+2024	25	30.87	Eid al-Adha, Sustainable Gastronomy Day, International Day for the Elimination of Sexual Violence in Conflict, World Refugee Day, International Day of Yoga, Public Service Day
+2024	26	25.60	Day of the Seafarer, International Day Against Drug Abuse and Illicit Trafficking, Micro-, Small and Medium-sized Enterprises Day, Carolina Day, International Day of the Tropics, International Asteroid Day
+2024	27	27.03	Independence Day, International Day of Cooperatives, Muharram
+2024	28	28.23	World Population Day, Nathan Bedford Forrest Day, Bastille Day
+2024	29	26.90	World Youth Skills Day, Rural Transit Day, Ashura, Nelson Mandela Day, World Chess Day
+2024	30	27.38	Pioneer Day, World Drowning Prevention Day, Korean War Veteran Recognition Day, World Hepatitis Day
+2024	31	30.63	International Day of Friendship, Colorado Day, Coast Guard Birthday
+2024	32	24.90	Purple Heart Day, International Day of the World's Indigenous People
+2024	33	26.40	International Youth Day, Tisha B'Av, Assumption of Mary, Hawaii Statehood Day, National Navajo Code Talkers Day
+2024	34	23.30	Raksha Bandhan, International Day of Remembrance of and Tribute to the Victims of Terrorism, International Day Commemorating the Victims of Acts of Violence Based on Religion or Belief, International Day for the Remembrance of the Slave Trade and its Abolition
+2024	35	30.30	Janmashtami, Lyndon Baines Johnson Day, International Day against Nuclear Tests, International Day of the Victims of Enforced Disappearances, International Day for People of African Descent
+2024	36	21.65	Labor Day, World Sexual Health Day, International Day of Charity, Ganesh Chaturthi, International Day of Clean Air for Blue Skies, International Literacy Day
+2024	37	26.98	International Day to Protect Education from Attack, World Suicide Prevention Day, First Responders Day, International Day for South-South Cooperation, Friday the 13th, International Day of Democracy
+2024	38	27.15	The Prophet's Birthday, World Patient Safety Day, International Equal Pay Day, National POW/MIA Recognition Day, International Day of Peace, Emancipation Day
+2024	39	21.66	International Day of Sign Languages, World Maritime Day, World Tourism Day, International Day for Universal Access to Information, International Day of Awareness of Food Loss and Waste
+2024	40	21.46	International Translation Day, International Day of Older Persons, International Day of Non-Violence, Navratri, Feast of St Francis of Assisi, World Teachers' Day, World Cerebral Palsy Day
+2024	41	17.30	World Habitat Day, World Post Day, World Mental Health Day, International Day of the Girl Child, Dussehra, Navy Birthday
+2024	42	13.72	Columbus Day, International Day of Rural Women, World Food Day, First Day of Sukkot, Alaska Day, Sweetest Day
+2024	43	15.65	Last Day of Sukkot, Shmini Atzeret, Simchat Torah, World Day for Audiovisual Heritage
+2024	44	16.34	World Stroke Day, Diwali/Deepavali, All Saints' Day, All Souls' Day, New York City Marathon
+2024	45	17.55	World Tsunami Awareness Day, International Day for Preventing the Exploitation of the Environment in War and Armed Conflict, Return Day, World Science Day for Peace and Development
+2024	46	10.96	Singles’ Day, World Pneumonia Day, World Diabetes Day, International Day for Tolerance, World Day of Remembrance for Road Traffic Victims
+2024	47	9.70	World Toilet Day, Universal Children's Day, World Television Day, Fake Friday
+2024	48	1.04	International Day for the Elimination of Violence against Women, Thanksgiving Day, International Day of Solidarity with the Palestinian People, Day of Remembrance for all Victims of Chemical Warfare, First Sunday of Advent
+2024	49	0.84	International Day for the Abolition of Slavery, International Day of Persons with Disabilities, International Volunteer Day for Economic and Social Development, St Nicholas Day, International Civil Aviation Day
+2024	50	1.97	Feast of the Immaculate Conception, Human Rights Day, International Mountain Day, International Day of Neutrality, Friday the 13th, Bill of Rights Day
+2024	51	0.77	Pan American Aviation Day, International Migrants Day, International Human Solidarity Day, Super Saturday
+2024	52	3.52	Christmas Eve, Christmas Day, Chanukah/Hanukkah (first day), International Day of Epidemic Preparedness
