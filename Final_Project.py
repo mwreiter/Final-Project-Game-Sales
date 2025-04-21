@@ -16,7 +16,7 @@ year = 2024
 latitude = 42.2808  # Ann Arbor, MI
 longitude = -83.7430
 start_date = "2024-01-01"
-end_date = "2024-01-10"  # Keep small range if testing
+end_date = "2024-12-31"  
 weather_url = "https://archive-api.open-meteo.com/v1/archive"
 
 # Connect to shared database
@@ -85,7 +85,7 @@ for month in range(1, 13):
     except Exception as e:
         print(f"Error for month {month}:", e)
 
-print(f"✅ Inserted {inserted_count} new holiday(s) into holidays.db")
+print(f"Inserted {inserted_count} new holiday(s) into holidays.db")
 
 # ----- DAILY WEATHER TABLE (25 rows per run) -----
 cur.execute('''
@@ -167,10 +167,10 @@ try:
 
         weather_inserted += 1
 
-    print(f"✅ Inserted {weather_inserted} new daily weather rows from {start_date} to {end_date}")
+    print(f"Inserted {weather_inserted} new daily weather rows from {start_date} to {end_date}")
 
 except Exception as e:
-    print("❌ Error fetching weather data:", e)
+    print("Error fetching weather data:", e)
 
 
 #Merge Tables
