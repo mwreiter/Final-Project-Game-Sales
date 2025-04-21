@@ -1,12 +1,10 @@
 import sqlite3
-
 import matplotlib.pyplot as plt
 
 def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="monthly_precipitation_report.txt"):
     """
     Joins the holidays and weather_daily tables to calculate average precipitation for each month (on holidays),
     lists holidays with precipitation info, saves a text report, and creates a visualization.
-
     """
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
@@ -45,7 +43,6 @@ def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="m
             for date, name, precip in results:
                 all_lines.append(f" - {date} | {name}: {precip} mm")
             all_lines.append(f"Average Precipitation: {avg_precip} mm\n")
-
         else:
             all_lines.append(" - No holidays with weather data found.\n")
 
@@ -59,12 +56,12 @@ def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="m
         for line in all_lines:
             f.write(line + "\n")
 
-    print(f"Full report saved to {output_file}")
+    print(f"\n✅ Full report saved to {output_file}")
 
     # Create visualization
     if month_precip:
-        month_labels = [month for month in month_precip.keys()]
-        values = [month_precip[month] for month in month_labels]
+        month_labels = list(month_precip.keys())
+        values = list(month_precip.values())
 
         plt.figure(figsize=(12, 6))
         plt.bar(month_labels, values, color='skyblue', edgecolor='black')
@@ -75,7 +72,8 @@ def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="m
         plt.tight_layout()
         plt.savefig("monthly_holiday_precip_chart.png")
         plt.show()
-@@ -77,5 +77,4 @@ def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="m
+
+        print("✅ Chart saved as monthly_holiday_precip_chart.png")
 
 # Run the function
 if __name__ == "__main__":
