@@ -7,7 +7,7 @@ def calculate_avg_temp_by_month():
     conn = sqlite3.connect("holidays.db")
     cur = conn.cursor()
 
-    print("🧠 Calculating average max temperature per month (Jan–Dec 2024)...")
+    print("Calculating average max temperature per month (Jan–Dec 2024)...")
 
     # Query for weather + holiday matchesgi
     query = '''
@@ -20,7 +20,7 @@ def calculate_avg_temp_by_month():
     df = pd.read_sql_query(query, conn)
 
     if df.empty:
-        print("⚠️ No holiday weather data available for 2024.")
+        print("No holiday weather data available for 2024.")
         return
 
     # Convert to datetime and extract year/month
@@ -42,7 +42,7 @@ def calculate_avg_temp_by_month():
         for _, row in grouped.iterrows():
             f.write(f"{row['year']}\t{row['month']}\t{row['avg_temp_max']:.2f}\n")
 
-    print("✅ Wrote analysis to avg_monthly_temperature.txt")
+    print("Wrote analysis to avg_monthly_temperature.txt")
 
     # Plotting
     plt.figure(figsize=(10, 5))
@@ -58,7 +58,7 @@ def calculate_avg_temp_by_month():
     plt.savefig("avg_monthly_temp_bar.png")
     plt.show()
 
-    print("✅ Saved bar chart as avg_monthly_temp_bar.png")
+    print("Saved bar chart as avg_monthly_temp_bar.png")
     conn.close()
 
 # Run the function
