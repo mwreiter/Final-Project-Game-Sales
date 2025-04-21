@@ -9,7 +9,7 @@ def calculate_avg_temp_by_month():
 
     print("🧠 Calculating average max temperature per month (Jan–Dec 2024)...")
 
-    # Query for weather + holiday matches
+    # Query for weather + holiday matchesgi
     query = '''
     SELECT w.date, w.temperature_max
     FROM weather_daily w
