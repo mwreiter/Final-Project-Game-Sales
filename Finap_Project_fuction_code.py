@@ -2,9 +2,6 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import sqlite3
-import pandas as pd
-import matplotlib.pyplot as plt
 
 def calculate_avg_temp_by_week():
     # Connect to the existing holidays.db
@@ -71,64 +68,7 @@ def calculate_avg_temp_by_week():
 
     conn.close()
 
-if __name__ == "__main__":
-    calculate_avg_temp_by_week()
-
-def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="monthly_precipitation_report.txt"):
-    """
-    Calculates average precipitation and lists holidays for all months found in the database.
-    Saves the results to a single text file and prints them to the console.
-    """
-    conn = sqlite3.connect(db_path)
-    cur = conn.cursor()
-
-    # Get unique months from the holiday_weather table
-    cur.execute("SELECT DISTINCT strftime('%m', date) as month FROM holiday_weather ORDER BY month")
-    months = [row[0] for row in cur.fetchall()]
-
-    all_lines = []
-
-    for month in months:
-        # Get average precipitation for the month
-        cur.execute('''
-            SELECT ROUND(AVG(precipitation_sum), 2)
-            FROM holiday_weather
-            WHERE strftime('%m', date) = ?
-        ''', (month,))
-        avg_precip = cur.fetchone()[0]
-
-        # Get holidays for the month
-        cur.execute('''
-            SELECT date, name, precipitation_sum
-            FROM holiday_weather
-            WHERE strftime('%m', date) = ?
-            ORDER BY date
-        ''', (month,))
-        holidays = cur.fetchall()
-
-        # Build output
-        all_lines.append(f"\n Month {month} — Holidays and Precipitation:")
-        if holidays:
-            for date, name, precip in holidays:
-                all_lines.append(f" - {date} | {name}: {precip} mm")
-            all_lines.append(f"Average Precipitation: {avg_precip} mm\n")
-        else:
-            all_lines.append(" - No holidays found in this month.\n")
-
-    conn.close()
-
-    # Print and save
-    for line in all_lines:
-        print(line)
-
-    with open(output_file, "w") as f:
-        for line in all_lines:
-            f.write(line + "\n")
-
-    print(f"\n Full monthly holiday precipitation report saved to {output_file}")
-
 # Run the function
 if __name__ == "__main__":
     calculate_avg_temp_by_week()
-    get_avg_precip_and_holidays_all_months()
 
