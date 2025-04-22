@@ -8,6 +8,7 @@ import requests
 
 # API setup for Calendarific
 API_KEY = "IJPcNW6nKApuM38dH6ODjurNBOJpJacr"
+backup_API_KEY = "PnOjVcq4K8CARKpIGDBauCsxWxXSeWVH"
 base_url = "https://calendarific.com/api/v2/holidays"
 country = "US"
 year = 2024
