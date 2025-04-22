@@ -1,11 +1,14 @@
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import os
 
 def calculate_avg_temp_by_month():
    # Connect to the existing holidays.db
-   conn = sqlite3.connect("holidays.db")
+   script_dir = os.path.dirname(os.path.abspath(__file__))
+   db_path = os.path.join(script_dir, "holidays.db")
+     
+   conn = sqlite3.connect(db_path)
    cur = conn.cursor()
 
 

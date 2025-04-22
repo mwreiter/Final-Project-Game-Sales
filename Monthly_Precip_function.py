@@ -1,11 +1,15 @@
 import sqlite3
 import matplotlib.pyplot as plt
+import os 
 
 def get_avg_precip_and_holidays_all_months(db_path="holidays.db", output_file="monthly_precipitation_report.txt"):
     """
     Joins the holidays and weather_daily tables to calculate average precipitation for each month (on holidays),
     lists holidays with precipitation info, saves a text report, and creates a visualization.
     """
+    
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(script_dir, "holidays.db")
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 

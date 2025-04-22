@@ -4,7 +4,7 @@
 
 import sqlite3
 import requests
-
+import os 
 
 # API setup for Calendarific
 API_KEY = "IJPcNW6nKApuM38dH6ODjurNBOJpJacr"
@@ -23,7 +23,9 @@ end_date = "2024-12-31"
 weather_url = "https://archive-api.open-meteo.com/v1/archive"
 
 # Connect to shared database
-conn = sqlite3.connect("holidays.db")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(script_dir, "holidays.db")
+conn = sqlite3.connect(db_path)
 cur = conn.cursor()
 
 # ----- HOLIDAYS TABLE -----
